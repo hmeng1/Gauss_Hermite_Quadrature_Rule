@@ -11,7 +11,11 @@ qweight = qweight';
 [qnodes,Index] = npermutek(qnodes',numVar);
 qnodes = (abs(qnodes) >1e-10).*qnodes;
 
-qweight = prod(qweight(Index),2);
+if sum(Index) == numVar
+    qweight = 1;
+else
+    qweight = prod(qweight(Index),2);
+end
 
 qnodes = transpose(qnodes);
 qweight = transpose(qweight);
